@@ -20,7 +20,7 @@ module "ServicePrincipal" {
 
 resource "azurerm_role_assignment" "rolespn" {
 
-  scope                = "/subscriptions/5f5470df-f806-47ee-8f78-6520f817df59"
+  scope                = "/subscriptions/6e9e3ef8-f295-4535-8718-5d88323e1b88"
   role_definition_name = "Contributor"
   principal_id         = module.ServicePrincipal.service_principal_object_id
 
@@ -47,7 +47,7 @@ resource "azurerm_key_vault_secret" "example" {
   name         = module.ServicePrincipal.client_id
   value        = module.ServicePrincipal.client_secret
   key_vault_id = module.keyvault.keyvault_id
-
+  
   depends_on = [
     module.keyvault
   ]
